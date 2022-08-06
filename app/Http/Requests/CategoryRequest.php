@@ -25,12 +25,17 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'title' => 'required|max:191',
             'description' => 'required|max:191',
-            'photo' => 'required|image'/*|size:1024*/,
             'status' => 'required|integer|min:0|max:1'
         ];
+
+        if (request()->route()->getName() === 'addCategory') {
+            $rules['photo'] = 'required|image';
+        }
+
+        return $rules;
     }
 
     public function failedValidation(Validator $validator)

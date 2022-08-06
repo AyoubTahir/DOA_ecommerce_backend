@@ -7,6 +7,7 @@ use Illuminate\Http\Resources\Json\ResourceResponse;
 
 class CategoryResourse extends JsonResource
 {
+    public static $wrap = null;
     public $statusCode;
 
     public function __construct($resource, $statusCode = 201)

@@ -6,6 +6,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class CategoryCollection extends ResourceCollection
 {
+    public static $wrap = null;
     /**
      * Transform the resource collection into an array.
      *
@@ -15,7 +16,8 @@ class CategoryCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'categories' => $this->collection
+            'categories' => $this->collection,
+            'count' => $this->count()
         ];
     }
 }
